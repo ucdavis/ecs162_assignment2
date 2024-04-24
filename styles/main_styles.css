@@ -1,0 +1,28 @@
+body {
+    font-family: "Segoe UI", sans-serif;
+}
+
+.game-prompt {
+    text-align: center; 
+}
+
+.button-container {
+    width: 100%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+button {
+    width: 200px; 
+    height: 200px; 
+    cursor: pointer; 
+    background-color: #ff0000; 
+    color: black; 
+    justify-content: center; 
+    margin: 10px; 
+}
+
+button:hover {
+    background-color: #ff00004f; 
+}
