@@ -20,10 +20,16 @@ body {
     align-items: center; 
 }
 
-#game-canvas {
-    background-color: lightgreen;
-    border: 1px solid black;
-    width: 70vw;
-    height: 70vw;
-    margin: auto;
-}
+#grid-container {
+    width: 400px;
+    height: 400px;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    border: 1px solid #000;
+  }
+
+  .grid-cell {
+    border: 1px solid #ccc;
+    background-color: #fff;
+  }
