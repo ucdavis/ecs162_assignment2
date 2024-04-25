@@ -1,4 +1,5 @@
 const gridContainer = document.getElementById("grid-container");
+const scoreText = document.getElementById('score-value');
 const gridDimension = 20;
 const directions = [
     [0, 1], // down
@@ -9,8 +10,9 @@ const directions = [
 
 // array of tuples representing each segment of the snake
 let snake_coordinates = [[10, 10]];
-let apple_coordinates = [[0, 0]];
+let apple_coordinates = [[5, 5]];
 let snake_direction = directions[0];
+let score = 0;
 
 function createGrid() {
 	for (let i = 0; i < gridDimension * gridDimension; i++) {
@@ -62,13 +64,17 @@ function moveSnake(){
 checkHasEaten();
 }
 
+function updateScore() {
+    score += 1;
+    scoreText.textContent = score;
+}
+
 function checkHasEaten(){
     head = snake_coordinates[0]
-    console.log(head[0], head[1], apple_coordinates[0][0], apple_coordinates[0][1]);
     if (head[0] === apple_coordinates[0][0] && head[1] === apple_coordinates[0][1])
     {
         setAppleCoordinates();
-        console.log(apple_coordinates);
+        updateScore();
     }
 }
 
