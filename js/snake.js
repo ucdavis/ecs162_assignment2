@@ -51,7 +51,6 @@ function setAppleCoordinates(){
 }
 
 function drawApple(){
-    setAppleCoordinates();
     fillCells(apple_coordinates, 'red');
 }
 
@@ -60,6 +59,17 @@ function moveSnake(){
         segment[0] += snake_direction[0];
         segment[1] += snake_direction[1];
     });
+checkHasEaten();
+}
+
+function checkHasEaten(){
+    head = snake_coordinates[0]
+    console.log(head[0], head[1], apple_coordinates[0][0], apple_coordinates[0][1]);
+    if (head[0] === apple_coordinates[0][0] && head[1] === apple_coordinates[0][1])
+    {
+        setAppleCoordinates();
+        console.log(apple_coordinates);
+    }
 }
 
 document.onkeydown = function (e) {
@@ -87,6 +97,7 @@ document.onkeydown = function (e) {
 
 // detect button press
 createGrid();
+
 function gameLoop(){
     clearCells();
     drawSnake();
