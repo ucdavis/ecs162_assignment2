@@ -1,0 +1,29 @@
+body {
+    font-family: "Segoe UI", sans-serif;
+    align-items: center;
+    height: 100vh;
+    display: flex;
+}
+
+.game-prompt {
+    text-align: center; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.game-container {
+    width: 100%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+#game-canvas {
+    background-color: lightgreen;
+    border: 1px solid black;
+    width: 70vw;
+    height: 70vw;
+    margin: auto;
+}
