@@ -14,11 +14,21 @@ function createGrid() {
 }
 
 function fillCells(coordinates, color) {
-	coordinates.forEach((coord) => {
-		const cellIndex = coord[0] + coord[1] * gridDimension;
-		const cell = gridContainer.children[cellIndex];
-		cell.style.backgroundColor = color;
-	});
+    coordinates.forEach((coord) => {
+        const cellIndex = coord[0] + coord[1] * gridDimension;
+        const cell = gridContainer.children[cellIndex];
+        cell.style.backgroundColor = color;
+    });
+}
+
+function clearCells() {
+    for (let row = 0; row < gridDimension; row++) {
+        for (let col = 0; col < gridDimension; col++) {
+            const cellIndex = col + row * gridDimension;
+            const cell = gridContainer.children[cellIndex];
+            cell.style.backgroundColor = 'transparent';
+        }
+    }
 }
 
 function drawSnake(){
@@ -46,7 +56,13 @@ function drawApple(){
 // is snake touches itself, die
 
 // detect button press
-
 createGrid();
-drawSnake();
-drawApple();
+function gameLoop(){
+    clearCells();
+    drawSnake();
+    drawApple();
+}
+
+setInterval(gameLoop, 1000);
+
+
