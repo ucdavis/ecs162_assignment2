@@ -1,8 +1,8 @@
 const gridContainer = document.getElementById("grid-container");
 const scoreText = document.getElementById("score-value");
-const easyButton = document.querySelector('.easy-button');
-const mediumButton = document.querySelector('.medium-button');
-const hardButton = document.querySelector('.hard-button');
+const easyButton = document.querySelector(".easy-button");
+const mediumButton = document.querySelector(".medium-button");
+const hardButton = document.querySelector(".hard-button");
 const gridDimension = 20;
 const directions = [
 	[0, 1], // down
@@ -13,27 +13,27 @@ const directions = [
 
 let snake_coordinates = null;
 let apple_coordinates = null;
-let snake_direction   = null;
-let gameOver          = null;
-let score             = null;
-let gameSpeed         = null;
+let snake_direction = null;
+let gameOver = null;
+let score = null;
+let gameSpeed = null;
 
 function gameLoop() {
-    clearCells();
-    drawSnake();
-    drawApple();
+	clearCells();
+	drawSnake();
+	drawApple();
 }
 
-function resetLoop(gameSpeed){
-    clearInterval(gameOver);
-    gridContainer.focus();
-    snake_coordinates = [[10, 10]];
-    apple_coordinates = [[5, 5]];
-    snake_direction = directions[0];
-    gameOver = null;
-    score = -1;
-    updateScore();
-    gameOver = setInterval(gameLoop, gameSpeed);
+function resetLoop(gameSpeed) {
+	clearInterval(gameOver);
+	gridContainer.focus();
+	snake_coordinates = [[10, 10]];
+	apple_coordinates = [[5, 5]];
+	snake_direction = directions[0];
+	gameOver = null;
+	score = -1;
+	updateScore();
+	gameOver = setInterval(gameLoop, gameSpeed);
 }
 
 function createGrid() {
@@ -143,19 +143,19 @@ document.onkeydown = function (e) {
 	}
 };
 
-function addButtonEventListener(button, speed) {
-    button.addEventListener("click", function () {
-        resetLoop(speed);
-    });
+function addDifficultyButtonEventListener(button, speed) {
+	button.addEventListener("click", function () {
+		resetLoop(speed);
+	});
 
-    button.addEventListener("keydown", function (e) {
-        if (e.keyCode >= 37 && e.keyCode <= 40) {
-            e.preventDefault();
-        }
-    });
+	button.addEventListener("keydown", function (e) {
+		if (e.keyCode >= 37 && e.keyCode <= 40) {
+			e.preventDefault();
+		}
+	});
 }
 
-addButtonEventListener(easyButton, 500);
-addButtonEventListener(mediumButton, 200);
-addButtonEventListener(hardButton, 100);
+addDifficultyButtonEventListener(easyButton, 1000);
+addDifficultyButtonEventListener(mediumButton, 700);
+addDifficultyButtonEventListener(hardButton, 100);
 createGrid();
