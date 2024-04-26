@@ -1,8 +1,14 @@
 const gridContainer = document.getElementById("grid-container");
 const scoreText = document.getElementById("score-value");
+
 const easyButton = document.querySelector(".easy-button");
 const mediumButton = document.querySelector(".medium-button");
 const hardButton = document.querySelector(".hard-button");
+const upArrow = document.getElementById("up-arrow");
+const downArrow = document.getElementById("down-arrow");
+const leftArrow = document.getElementById("left-arrow");
+const rightArrow = document.getElementById("right-arrow");
+
 const gridDimension = 20;
 const directions = [
 	[0, 1], // down
@@ -29,7 +35,6 @@ function resetLoop(gameSpeed) {
 	gridContainer.focus();
 	snake_coordinates = [[10, 10]];
 	apple_coordinates = [[5, 5]];
-	snake_direction = directions[0];
 	gameOver = null;
 	score = -1;
 	updateScore();
@@ -130,18 +135,38 @@ document.onkeydown = function (e) {
 	switch (e.keyCode) {
 		case 37:
 			snake_direction = directions[3];
+			leftArrow.click();
 			break;
 		case 38:
 			snake_direction = directions[2];
+			upArrow.click();
 			break;
 		case 39:
 			snake_direction = directions[1];
+			rightArrow.click();
 			break;
 		case 40:
 			snake_direction = directions[0];
+			downArrow.click();
 			break;
 	}
 };
+leftArrow.addEventListener("click", function () {
+	toggleArrowButtonShadow(leftArrow);
+	snake_direction = directions[3];
+});
+upArrow.addEventListener("click", function () {
+	toggleArrowButtonShadow(upArrow);
+	snake_direction = directions[2];
+});
+rightArrow.addEventListener("click", function () {
+	toggleArrowButtonShadow(rightArrow);
+	snake_direction = directions[1];
+});
+downArrow.addEventListener("click", function () {
+	toggleArrowButtonShadow(downArrow);
+	snake_direction = directions[0];
+});
 
 function addDifficultyButtonEventListener(button, speed) {
 	button.addEventListener("click", function () {
