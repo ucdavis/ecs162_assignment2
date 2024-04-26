@@ -56,12 +56,17 @@ function drawApple(){
     fillCells(apple_coordinates, 'red');
 }
 
-function moveSnake(){
-    snake_coordinates.forEach((segment) => {
-        segment[0] += snake_direction[0];
-        segment[1] += snake_direction[1];
-    });
-checkHasEaten();
+function moveSnake() {
+    // make each previous segment equal to next segment
+    for (let i = snake_coordinates.length - 1; i > 0; i--) {
+        snake_coordinates[i][0] = snake_coordinates[i - 1][0];
+        snake_coordinates[i][1] = snake_coordinates[i - 1][1];
+    }
+
+    // update the head
+    snake_coordinates[0][0] += snake_direction[0];
+    snake_coordinates[0][1] += snake_direction[1];
+    checkHasEaten();
 }
 
 function updateScore() {
@@ -73,6 +78,14 @@ function checkHasEaten(){
     head = snake_coordinates[0]
     if (head[0] === apple_coordinates[0][0] && head[1] === apple_coordinates[0][1])
     {
+        let tail = snake_coordinates[snake_coordinates.length - 1];
+        let newSegment = [tail[0] + snake_direction[0],
+                          tail[1] + snake_direction[1]]
+        snake_coordinates.push(newSegment);
+
+        console.log(newSegment);
+        console.log(snake_coordinates);
+
         setAppleCoordinates();
         updateScore();
     }
@@ -97,11 +110,6 @@ document.onkeydown = function (e) {
 
 // if snake bumps into wall, game over
 
-// if snake gets apple, increment points + size
-
-// is snake touches itself, die
-
-// detect button press
 createGrid();
 
 function gameLoop(){
