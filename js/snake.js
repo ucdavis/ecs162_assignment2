@@ -155,7 +155,7 @@ function addButtonEventListener(button, speed) {
     });
 }
 
-addButtonEventListener(easyButton, 1000);
-addButtonEventListener(mediumButton, 700);
+addButtonEventListener(easyButton, 500);
+addButtonEventListener(mediumButton, 200);
 addButtonEventListener(hardButton, 100);
 createGrid();
