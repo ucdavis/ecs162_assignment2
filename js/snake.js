@@ -1,5 +1,8 @@
 const gridContainer = document.getElementById("grid-container");
 const scoreText = document.getElementById("score-value");
+const easyButton = document.querySelector('.easy-button');
+const mediumButton = document.querySelector('.medium-button');
+const hardButton = document.querySelector('.hard-button');
 const gridDimension = 20;
 const directions = [
 	[0, 1], // down
@@ -8,12 +11,30 @@ const directions = [
 	[-1, 0], // left
 ];
 
-// array of tuples representing each segment of the snake
-let snake_coordinates = [[10, 10]];
-let apple_coordinates = [[5, 5]];
-let snake_direction = directions[0];
-let gameOver = null;
-let score = 0;
+let snake_coordinates = null;
+let apple_coordinates = null;
+let snake_direction   = null;
+let gameOver          = null;
+let score             = null;
+let gameSpeed         = null;
+
+function gameLoop() {
+    clearCells();
+    drawSnake();
+    drawApple();
+}
+
+function resetLoop(gameSpeed){
+    clearInterval(gameOver);
+    gridContainer.focus();
+    snake_coordinates = [[10, 10]];
+    apple_coordinates = [[5, 5]];
+    snake_direction = directions[0];
+    gameOver = null;
+    score = -1;
+    updateScore();
+    gameOver = setInterval(gameLoop, gameSpeed);
+}
 
 function createGrid() {
 	for (let i = 0; i < gridDimension * gridDimension; i++) {
@@ -122,20 +143,19 @@ document.onkeydown = function (e) {
 	}
 };
 
-function toggleButtonShadow(button) {
-    document.querySelectorAll('.button-container button').forEach(btn => {
-        btn.classList.remove('invert-shadow');
+function addButtonEventListener(button, speed) {
+    button.addEventListener("click", function () {
+        resetLoop(speed);
     });
 
-    button.classList.add('invert-shadow');
+    button.addEventListener("keydown", function (e) {
+        if (e.keyCode >= 37 && e.keyCode <= 40) {
+            e.preventDefault();
+        }
+    });
 }
 
+addButtonEventListener(easyButton, 1000);
+addButtonEventListener(mediumButton, 700);
+addButtonEventListener(hardButton, 100);
 createGrid();
-
-function gameLoop() {
-	clearCells();
-	drawSnake();
-	drawApple();
-}
-
-gameOver = setInterval(gameLoop, 1000);
