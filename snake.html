@@ -3,6 +3,7 @@
 	<head>
 		<title>Snake</title>
 		<link rel="stylesheet" href="styles/snake.css" />
+        <link rel="stylesheet" href="styles/button_styles.css" />
 	</head>
 	<body>
 		<p class="game-title">Snake</p>
@@ -13,6 +14,14 @@
                 <button class="easy-button" onclick="toggleButtonShadow(this)">Easy</button>
                 <button class="medium-button" onclick="toggleButtonShadow(this)">Medium</button>
                 <button class="hard-button" onclick="toggleButtonShadow(this)">Hard</button>
+            </div>
+            <div class="arrow-button-container">
+                <div id="up-arrow" class="arrow-button" onclick="toggleButtonShadow(this)">↑</div>
+                <div class="horizontal-arrows">
+                    <div id="left-arrow" class="arrow-button" onclick="toggleButtonShadow(this)">←</div>
+                    <div id="right-arrow" class="arrow-button" onclick="toggleButtonShadow(this)">→</div>
+                </div>
+                <div id="down-arrow" class="arrow-button" onclick="toggleButtonShadow(this)">↓</div>
             </div>
 		</div>
 		<script src="js/snake.js"></script>
