@@ -42,40 +42,9 @@ body {
 	text-align: center;
 }
 
-.button-container {
-    margin-top: 100px;
-    width: 100%; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-}
 
-.button-container button {
-    margin: 0 10px;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    color: rgb(71, 58, 58);
-}
-
-.easy-button {
-    background-color: #ceffce;
-    border: 2px solid #80ff80;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-.medium-button {
-    background-color: #feffbc;
-    border: 2px solid #feffad;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-.hard-button {
-    background-color: #ffbbbb;
-    border: 2px solid #ff8c8c;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-.invert-shadow {
-    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5);
+@media screen and (max-width: 600px) {
+    .game-container {
+        padding: 10px;
+    }
 }
