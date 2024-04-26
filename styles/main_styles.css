@@ -17,12 +17,21 @@ button {
     width: 200px; 
     height: 200px; 
     cursor: pointer; 
-    background-color: #ff0000; 
-    color: black; 
     justify-content: center; 
     margin: 10px; 
+    background-color: #ffffff; 
+    position: relative;
+    overflow: hidden;
+    border: none;
 }
 
 button:hover {
     background-color: #ff00004f; 
+}
+
+button img {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    object-position: center;
 }
