@@ -12,6 +12,7 @@ const directions = [
 let snake_coordinates = [[10, 10]];
 let apple_coordinates = [[5, 5]];
 let snake_direction = directions[0];
+let gameOver = null;
 let score = 0;
 
 function createGrid() {
@@ -67,6 +68,16 @@ function moveSnake() {
     snake_coordinates[0][0] += snake_direction[0];
     snake_coordinates[0][1] += snake_direction[1];
     checkHasEaten();
+    checkWallCollision();
+}
+
+function checkWallCollision() {
+    let x = snake_coordinates[0][0];
+    let y = snake_coordinates[0][1];
+
+    if (x === 0 || x === 19 || y === 0 || y === 19){
+        clearInterval(gameOver);
+    }
 }
 
 function updateScore() {
@@ -118,6 +129,6 @@ function gameLoop(){
     drawApple();
 }
 
-setInterval(gameLoop, 1000);
+gameOver = setInterval(gameLoop, 1000);
 
 
