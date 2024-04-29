@@ -95,7 +95,9 @@ function moveSnake() {
 	// update the head
 	snake_coordinates[0][0] += snake_direction[0];
 	snake_coordinates[0][1] += snake_direction[1];
-	checkHasEaten();
+	
+    checkSelfCollision();
+    checkHasEaten();
 	checkWallCollision();
 }
 
@@ -106,6 +108,15 @@ function checkWallCollision() {
 	if (x === 0 || x === gridDimension - 1 || y === 0 || y === gridDimension - 1) {
 		clearInterval(gameOver);
 	}
+}
+
+function checkSelfCollision() {
+    const head = snake_coordinates[0];
+    for (let i = 1; i < snake_coordinates.length; i++) {
+        if (head[0] === snake_coordinates[i][0] && head[1] === snake_coordinates[i][1]) {
+            clearInterval(gameOver);
+        }
+    }
 }
 
 function updateScore() {
