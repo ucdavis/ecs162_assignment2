@@ -5,28 +5,32 @@ body {
 	align-items: center;
 	height: 100vh;
 	display: flex;
+    margin: 10%;
 }
 
 #back-button {
     position: absolute;
-    top: 1%;
-    left: 5%;
+    top: 10px;
+    left: 10px;
     padding: 10px 20px;
     font-size: 16px;
     background-color: #f3d113;
     border: none;
-    border-radius:20px;
+    border-radius: 20px;
     cursor: pointer;
-    z-index: 5;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5)
+    z-index: 100;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
+
 .game-title {
-	text-align: center;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    font-size: 30px;
 }
 
 .game-container {
@@ -58,19 +62,26 @@ body {
 
 .game-over {
     display: none;
-    position: absolute;
+    position: fixed;
     width: 100%;
-    top: 35%;
+    top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 3em;
     text-align: center;
     z-index: 10;
-    transform: translate(-50%, -50%);
 }
 
 
+
 @media screen and (max-width: 600px) {
-    .game-container {
-        padding: 10px;
+    #grid-container {
+        width: 100%;
+        height: auto;
+        grid-template-columns: repeat(20, 5%);
+    }
+
+    .game-title, #back-button {
+        padding: 8px 16px;
     }
 }
