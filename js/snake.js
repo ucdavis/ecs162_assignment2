@@ -8,6 +8,7 @@ const upArrow = document.getElementById("up-arrow");
 const downArrow = document.getElementById("down-arrow");
 const leftArrow = document.getElementById("left-arrow");
 const rightArrow = document.getElementById("right-arrow");
+const gameOverMessage = document.getElementById("game-over-message")
 
 const gridDimension = 20;
 const directions = [
@@ -106,7 +107,7 @@ function checkWallCollision() {
 	let y = snake_coordinates[0][1];
 
 	if (x === 0 || x === gridDimension - 1 || y === 0 || y === gridDimension - 1) {
-		clearInterval(gameOver);
+		endGame();
 	}
 }
 
@@ -114,7 +115,7 @@ function checkSelfCollision() {
     const head = snake_coordinates[0];
     for (let i = 1; i < snake_coordinates.length; i++) {
         if (head[0] === snake_coordinates[i][0] && head[1] === snake_coordinates[i][1]) {
-            clearInterval(gameOver);
+            endGame();
         }
     }
 }
@@ -140,6 +141,11 @@ function checkHasEaten() {
 		setAppleCoordinates();
 		updateScore();
 	}
+}
+
+function endGame() {
+    gameOverMessage.style.display = "block";
+    clearInterval(gameOver);
 }
 
 document.onkeydown = function (e) {
