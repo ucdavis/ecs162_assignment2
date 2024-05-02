@@ -1,6 +1,7 @@
 import spriteImg from './sprite';
 import './index.scss';
 
+// DOM elements for parts of the game interface
 const gameEl = document.getElementById('js-solitaire');
 const dealPileEl = document.getElementById('js-deck-pile');
 const dealEl = document.getElementById('js-deck-deal');
@@ -9,8 +10,8 @@ const deskContainerEl = document.getElementById('js-board');
 const deckPileEl = document.getElementById('js-deck-pile');
 const resetEl = document.getElementById('js-reset');
 
-const cardWidth = 71;
-const cardHeight = 96;
+const cardWidth = 71; // width of each card
+const cardHeight = 96; // height of each card
 const state = {
     // clubs (♣), diamonds (♦), hearts (♥) and spades (♠)
     types: ['c', 'd', 'h', 's'],
@@ -59,8 +60,10 @@ const state = {
     }
 };
 
+//This function will return a card based on its index
 const getCard = index => state.cards[index];
 
+// This function turns a card face up
 const faceUp = card => {
     state.cards[card].facingUp = true;
     requestAnimationFrame(() => {
@@ -69,12 +72,14 @@ const faceUp = card => {
     });
 };
 
+// This function turns a card face down
 const faceDown = card => {
     state.cards[card].facingUp = false;
     state.cards[card].el.classList.remove('card--front');
     state.cards[card].el.classList.add('card--back');
 };
 
+// This function turns the last card on the deck face up
 const faceUpLastOnDesk = index => {
     const card = getLastOnDesk(index);
     if (card !== null) {
@@ -82,18 +87,21 @@ const faceUpLastOnDesk = index => {
     }
 };
 
+// This function appends a card DOM element to another card's DOM element 
 const appendToCard = (target, card) => {
     state.cards[target].el.appendChild(
         state.cards[card].el
     )
 };
 
+// This function appends a card to the deck
 const appendToDesk = (desk, card) => {
     state.desk[desk].el.appendChild(
         state.cards[card].el
     )
 };
 
+// This function gets the last card on the deck
 const getLastOnDesk = desk => {
     const l = state.desk[desk].cards.length;
     if (l > 0) {
@@ -102,6 +110,7 @@ const getLastOnDesk = desk => {
     return null;
 };
 
+// This function gets the last card in a specific pile 
 const getLastOnPile = (pile, index) => {
     const l = state[pile][index].cards.length;
     if (l > 0) {
@@ -111,6 +120,7 @@ const getLastOnPile = (pile, index) => {
     return {};
 };
 
+// This function determines the location of a specific card within all the decks
 const getCardLocation = card => {
     for (let i = 0; i < 7; i++) {
         const index = state.desk[i].cards.indexOf(card);
@@ -148,6 +158,7 @@ const getCardLocation = card => {
     // 'Card not found!';
 };
 
+// This function returns all the cards on top of a specific card in a pile
 const getSubCards = card => {
     const { location, pile, index } = getCardLocation(card);
 
@@ -156,10 +167,12 @@ const getSubCards = card => {
     );
 };
 
+// This is a helper function to access a specific pile by its index
 const getPile = (pile, index) => {
     return state[pile][index];
 };
 
+// This function moves a set of cards to another pile
 const moveCardTo = (dest, i, card) => {
     const {
         location,
@@ -182,6 +195,7 @@ const moveCardTo = (dest, i, card) => {
     // console.log(state);
 };
 
+// This function checks if a card can be placed on top of another card 
 const canBePlacedOnCard = (child, parent) => {
     const { type, number } = getCard(child);
     const {
@@ -194,6 +208,7 @@ const canBePlacedOnCard = (child, parent) => {
     );
 };
 
+// This function moves a card onto a specific pile
 const placeCardTo = (dest, index, card) => {
     function remove(array, element) {
         const index = array.indexOf(element);
@@ -206,6 +221,7 @@ const placeCardTo = (dest, index, card) => {
     remove(state.deal.pile.cards, card);
 };
 
+// This function deals cards onto the playing deck 
 function dealCards() {
     let card = 0;
     for (let i = 0; i < 7; i++) {
@@ -227,6 +243,7 @@ function dealCards() {
     }
 }
 
+// This function resets the game by clearing the decks and shuffling the cards
 function resetGame() {
     // clear decks
     for (let i = 0; i < 7; i++) {
@@ -260,6 +277,7 @@ function resetGame() {
     });
 }
 
+// This function handles click events on cards
 const handleClick = index => event => {
     event.stopPropagation();
     const { el, facingUp } = getCard(index);
@@ -320,6 +338,7 @@ const handleClick = index => event => {
     }
 };
 
+// This function resets the deal pile by moving cards back to the deal pile
 function restartDeal() {
     state.deal.pile.cards = state.deal.deal.cards;
     state.deal.deal.cards = [];
@@ -331,6 +350,7 @@ function restartDeal() {
     }
 }
 
+// This function returns the current mouse position
 function getMousePosition(event) {
     return {
         x: event.pageX,
@@ -338,6 +358,7 @@ function getMousePosition(event) {
     };
 }
 
+// This function handles the movement of a card being dragged
 const handleMove = event => {
     if (state.moving.capture) {
         const el = state.moving.element;
@@ -348,6 +369,7 @@ const handleMove = event => {
     }
 };
 
+// This function initializes the position of the moving card
 const startMovingPosition = event => {
     const el = state.moving.element;
     const { x, y } = getMousePosition(event);
@@ -363,6 +385,7 @@ const startMovingPosition = event => {
     el.style.top = `${y - state.moving.offset.y - 5}px`;
 };
 
+// This function initializes the card movement when it's clicked and held
 let moving;
 const captureMove = index => event => {
     event.preventDefault();
@@ -407,6 +430,7 @@ const captureMove = index => event => {
     }
 };
 
+// This function drops the card onto the specified destination when it's released
 const dropCard = (x, y) => {
     for (const destination of state.moving.destinations) {
         const { width, height, left, top } = destination.offset;
@@ -436,6 +460,7 @@ const dropCard = (x, y) => {
     }
 };
 
+// This function handles the release of the card after it's moved
 let release;
 const releaseMove = event => {
     clearTimeout(moving);
@@ -457,6 +482,7 @@ const releaseMove = event => {
     }
 };
 
+// This function determines the available destinations for a card 
 const getAvailableDestinations = (index, first = false) => {
     const { type, number } = getCard(index);
     const destinations = [];
@@ -536,7 +562,7 @@ const getAvailableDestinations = (index, first = false) => {
     return destinations;
 };
 
-
+// This function checks if the game is finished
 const gameFinish = () => {
     // game finish check
     for (let i = 3; i >= 0; i--) {
@@ -553,6 +579,7 @@ window.win = () => {
     win(width, height, left, top);
 };
 
+// This function details what animations occur when you win
 const win = (canvasWidth, canvasHeight, canvasLeft, canvasTop) => {
     const image = document.createElement('img');
     image.src = spriteImg;
@@ -660,6 +687,7 @@ const win = (canvasWidth, canvasHeight, canvasLeft, canvasTop) => {
     document.addEventListener('click', removeAnimation, false);
 };
 
+// This function initializes a solitaire game
 function initSolitaire() {
     // add sprite
     const css = document.createElement('style');
