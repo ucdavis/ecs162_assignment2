@@ -1,9 +1,19 @@
+* {
+    font-family: "Courier New", Courier, monospace;
+}
+
 body {
-    font-family: "Segoe UI", sans-serif;
+    background-color: lightblue;
 }
 
 .game-prompt {
-    text-align: center; 
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    font-size: 30px;
 }
 
 .button-container {
@@ -11,6 +21,13 @@ body {
     display: flex; 
     justify-content: center; 
     align-items: center; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 100px;
+    height: 100px;
 }
 
 button {
@@ -19,14 +36,14 @@ button {
     cursor: pointer; 
     justify-content: center; 
     margin: 10px; 
-    background-color: #ffffff; 
+    background-color: rgba(8, 77, 100, 0.357); 
     position: relative;
     overflow: hidden;
     border: none;
 }
 
 button:hover {
-    background-color: #ff00004f; 
+    background-color: rgb(5, 19, 69); 
 }
 
 button img {
