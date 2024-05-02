@@ -74,6 +74,17 @@ button img {
     object-position: center;
 }
 
+footer {
+    position: absolute;
+    background-color: #fff;
+    height: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
 
 @media (max-width: 768px) {
     button {

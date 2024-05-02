@@ -1,9 +1,11 @@
+* {
+    font-family: "Courier New", Courier, monospace;
+}
+
 body {
-  font-family: Arial, sans-serif;
   text-align: center;
   margin: 0;
   padding: 0;
-  background: #faf8ef;
 }
 
 #back-button {
@@ -13,6 +15,17 @@ body {
     padding: 10px 20px;
     font-size: 16px;
     background-color: #f3d113;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+#new-game-button {
+    font-size: 16px;
+    background-color: #0c9417;
+    color: white;
     border: none;
     border-radius: 20px;
     cursor: pointer;
@@ -60,4 +73,15 @@ body {
 
 .score-container {
   margin: 20px 0;
+}
+
+footer {
+    position: relative;
+    background-color: #fff;
+    height: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
 }

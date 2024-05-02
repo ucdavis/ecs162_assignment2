@@ -181,3 +181,14 @@ body {
   box-shadow: var(--hover-deck);
   background-color: rgba(255, 2, 2, 0.2);
 }
+
+footer {
+    position: absolute;
+    background-color: #fff;
+    height: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
