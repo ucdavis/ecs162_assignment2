@@ -3,12 +3,36 @@ body {
   width: 100vw;
   height: 100vh;
   margin: 0;
-  padding: 0;
+  padding: 10;
 }
 
-body {
-  background: url("../images/bg.jpg") no-repeat center;
-  background-size: cover;
+* {
+    font-family: "Courier New", Courier, monospace;
+}
+
+#back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #f3d113;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+
+.game-title {
+    text-align: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    font-size: 30px;
+    font-weight: bolder;
 }
 
 .solitaire {
@@ -149,11 +173,11 @@ body {
 }
 
 .aces {
-  border: 2.5px solid rgba(255, 255, 255, 0.6);
+  border: 2.5px solid rgba(255, 7, 7, 0.6);
   transition: 0.2s;
 }
 
 .aces:hover {
   box-shadow: var(--hover-deck);
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 2, 2, 0.2);
 }
