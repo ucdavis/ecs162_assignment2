@@ -1,3 +1,8 @@
+const upArrow = document.getElementById("up-arrow");
+const downArrow = document.getElementById("down-arrow");
+const leftArrow = document.getElementById("left-arrow");
+const rightArrow = document.getElementById("right-arrow");
+
 document.addEventListener('DOMContentLoaded', () => {
   createGrid();
   setupInputListeners();
@@ -80,6 +85,69 @@ function handleInput(e) {
     checkForGameOver();
   }
 }
+
+function handleArrowPress(key) {
+    let flippedHorizontally = false;
+    let rotated = false;
+    let movePlayed = true;
+
+    switch (key) {
+        case 'ArrowUp':
+            board = transpose(board);
+            rotated = true;
+            break;
+        case 'ArrowDown':
+            board = transpose(board);
+            board = board.map(row => row.reverse());
+            rotated = true;
+            flippedHorizontally = true;
+            break;
+        case 'ArrowLeft':
+            break;
+        case 'ArrowRight':
+            board = board.map(row => row.reverse());
+            flippedHorizontally = true;
+            break;
+        default:
+            movePlayed = false;
+    }
+
+    if (movePlayed) {
+        let past = copyBoard(board);
+        for (let i = 0; i < size; i++) {
+            board[i] = operate(board[i]);
+        }
+        if (flippedHorizontally) {
+            board = board.map(row => row.reverse());
+        }
+        if (rotated) {
+            board = transpose(board);
+        }
+        if (compareBoards(past, board)) {
+            addNumber();
+        }
+        updateBoard();
+        checkForGameOver();
+    }
+}
+
+leftArrow.addEventListener("click", function () {
+    handleArrowPress('ArrowLeft');
+});
+
+upArrow.addEventListener("click", function () {
+    handleArrowPress('ArrowUp');
+});
+
+rightArrow.addEventListener("click", function () {
+    handleArrowPress('ArrowRight');
+});
+
+downArrow.addEventListener("click", function () {
+    handleArrowPress('ArrowDown');
+});
+
+
 
 function operate(row) {
   row = slide(row);

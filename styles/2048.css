@@ -85,3 +85,15 @@ footer {
     box-sizing: border-box;
     text-align: center;
 }
+
+@media screen and (max-width: 480px) {
+    #grid-container {
+        width: 100%;
+        height: auto;
+        grid-template-columns: repeat(20, 5%);
+    }
+
+    .game-title, #back-button {
+        padding: 8px 16px;
+    }
+}

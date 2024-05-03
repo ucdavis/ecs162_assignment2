@@ -3,6 +3,7 @@
     <head>
         <title>2048</title>
         <link rel="stylesheet" href="styles/2048.css" />
+        <link rel="stylesheet" href="styles/button_styles.css" />
     </head>
     <body>
     <a href="index.html"><button id="back-button"> Back </button></a>
@@ -17,6 +18,14 @@
         </div>
         </div>
     </div>
+    <div class="arrow-button-container">
+                <div id="up-arrow" class="arrow-button" onclick="toggleArrowButtonShadow(this)">↑</div>
+                <div class="horizontal-arrows">
+                    <div id="left-arrow" class="arrow-button" onclick="toggleArrowButtonShadow(this)">←</div>
+                    <div id="right-arrow" class="arrow-button" onclick="toggleArrowButtonShadow(this)">→</div>
+                </div>
+                <div id="down-arrow" class="arrow-button" onclick="toggleArrowButtonShadow(this)">↓</div>
+            </div>
     <script src="js/2048.js"></script>
     <footer>
         Copyright © 2024 LiteGames
