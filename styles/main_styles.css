@@ -2,109 +2,87 @@
     font-family: "Courier New", Courier, monospace;
 }
 
-body{
+body {
     height: 100vh;  
     margin: 0;     
     display: flex;
-    justify-content: center; 
+    flex-direction: column; 
     align-items: center;    
+    justify-content: center;
     background-color: lightblue;  
 }
 
-
 header {
-    position: absolute;
     background-color: #fff;
-    padding-left: 10%;
-    padding-right: 10%;
-    height: auto;
-    top: 0;
-    left: 0;
-    width: 100vw;
+    padding: 20px 10%; 
     box-sizing: border-box;
+    width: 100%; 
+    text-align: center; 
 }
 
 main {
-    position: relative;
-    display: block;
-    margin-top: auto;
-    margin-bottom: auto;
+    width: 100%; 
     padding: 20px;
+    box-sizing: border-box;
 }
 
 h1 {
-    text-align: center;
     color: rgb(2, 2, 61);
     font-size: 50px;
     font-weight: bold;
 }
 
 .game-prompt, .button-container {
-    width: 100%;
     text-align: center;
-    margin: 10% 0;
+    margin: 20px 0; 
 }
 
 .button-container {
     display: flex;
-    justify-content: center;  
-    align-items: center;      
-    width: 100%;              
-    height: 100px;         
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
-
 
 button {
     width: 200px; 
     height: 200px; 
     cursor: pointer; 
-    justify-content: center; 
-    margin: 10px; 
     background-color: rgba(8, 77, 100, 0.357); 
-    position: relative;
-    overflow: hidden;
     border: none;
+    margin: 10px;
 }
 
 button:hover {
-    background-color: rgb(5, 19, 69); 
+    background-color: rgb(5, 19, 69);
 }
 
 button img {
-    width: 90%;
-    height: 90%;
+    width: 100%; 
+    height: 100%;
     object-fit: cover;
-    object-position: center;
 }
 
 footer {
-    position: fixed;
-    background-color: #fff;
-    height: auto;
     bottom: 0;
     left: 0;
-    width: 100%;
-    box-sizing: border-box;
+    width: 100%; 
+    background-color: #fff;
+    padding: 10px 0;
     text-align: center;
+    position: fixed;
 }
-
 
 @media (max-width: 768px) {
     button {
         width: 150px;  
         height: 150px; 
-        margin: 5px;   
-    }
-
-    .button-container {
-        height: auto;  
-        padding: 10px; 
     }
 }
 
 @media (max-width: 480px) {
     button {
-        width: 120px; 
+        width: 120px;
         height: 120px;
     }
 }
