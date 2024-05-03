@@ -183,7 +183,7 @@ body {
 }
 
 footer {
-    position: absolute;
+    position: fixed;
     background-color: #fff;
     height: auto;
     bottom: 0;
