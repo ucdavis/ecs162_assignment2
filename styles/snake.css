@@ -62,7 +62,7 @@ body {
 
 .game-over {
     display: none;
-    position: fixed;
+    position: absolute;
     width: 100%;
     top: 50%;
     left: 50%;
@@ -72,9 +72,18 @@ body {
     z-index: 10;
 }
 
+footer {
+    position: fixed;
+    background-color: #fff;
+    height: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
 
-
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 480px) {
     #grid-container {
         width: 100%;
         height: auto;

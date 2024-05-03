@@ -1,17 +1,55 @@
-body {
-    font-family: "Segoe UI", sans-serif;
+* {
+    font-family: "Courier New", Courier, monospace;
 }
 
-.game-prompt {
-    text-align: center; 
+body, html {
+    height: 100vh;  
+    margin: 0;     
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    background-color: lightblue;  
+}
+
+
+header {
+    position: absolute;
+    background-color: #fff;
+    padding: 10%;
+    height: auto;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+main {
+    display: block;
+    margin-top: var(--header-margin, 20%);
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(2, 2, 61);
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.game-prompt, .button-container {
+    width: 100%;
+    text-align: center;
+    margin: 10% 0;
 }
 
 .button-container {
-    width: 100%; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
+    display: flex;
+    justify-content: center;  
+    align-items: center;      
+    width: 100%;              
+    height: 100px;            
 }
+
 
 button {
     width: 200px; 
@@ -19,14 +57,14 @@ button {
     cursor: pointer; 
     justify-content: center; 
     margin: 10px; 
-    background-color: #ffffff; 
+    background-color: rgba(8, 77, 100, 0.357); 
     position: relative;
     overflow: hidden;
     border: none;
 }
 
 button:hover {
-    background-color: #ff00004f; 
+    background-color: rgb(5, 19, 69); 
 }
 
 button img {
@@ -34,4 +72,36 @@ button img {
     height: 90%;
     object-fit: cover;
     object-position: center;
+}
+
+footer {
+    position: absolute;
+    background-color: #fff;
+    height: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+
+@media (max-width: 768px) {
+    button {
+        width: 150px;  
+        height: 150px; 
+        margin: 5px;   
+    }
+
+    .button-container {
+        height: auto;  
+        padding: 10px; 
+    }
+}
+
+@media (max-width: 480px) {
+    button {
+        width: 120px; 
+        height: 120px;
+    }
 }

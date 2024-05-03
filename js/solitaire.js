@@ -1,3 +1,6 @@
+// Portions of this file are derived from js-solitaire at https://github.com/khang-nd/js-solitaire
+// under the MIT License. Copyright 2021 Radovan Janjic, Khang Nguyen Duy.
+
 const gameEl = document.getElementById("js-solitaire");
 const dealPileEl = document.getElementById("js-deck-pile");
 const dealEl = document.getElementById("js-deck-deal");

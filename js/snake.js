@@ -37,6 +37,7 @@ function resetLoop(gameSpeed) {
 	snake_coordinates = [[10, 10]];
 	apple_coordinates = [[5, 5]];
 	gameOver = null;
+    gameOverMessage.style.display = "none";
 	score = -1;
 	updateScore();
 	gameOver = setInterval(gameLoop, gameSpeed);

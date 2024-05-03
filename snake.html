@@ -6,16 +6,20 @@
         <link rel="stylesheet" href="styles/button_styles.css" />
 	</head>
 	<body>
-        <a href="index.html"><button id="back-button"> Back </button></a>
-		<p class="game-title">Snake</p>
+        <header>
+            <a href="index.html"><button id="back-button"> Back </button></a>
+		    <p class="game-title">Snake</p>
+        </header>
 		<div class="game-container">
 			<div id="score">Score: <span id="score-value">0</span></div>
 			<div id="grid-container"></div>
+            
             <div class="button-container">
                 <button class="easy-button" onclick="toggleButtonShadow(this)">Easy</button>
                 <button class="medium-button" onclick="toggleButtonShadow(this)">Medium</button>
                 <button class="hard-button" onclick="toggleButtonShadow(this)">Hard</button>
             </div>
+            
             <div class="arrow-button-container">
                 <div id="up-arrow" class="arrow-button" onclick="toggleArrowButtonShadow(this)">↑</div>
                 <div class="horizontal-arrows">
@@ -27,7 +31,11 @@
             <div id="game-over-message" class="game-over">
                 Game Over!
             </div>
+            <footer>
+                Copyright © 2024 LiteGames
+            </footer>
 		</div>
+        
 		<script src="js/snake.js"></script>
         <script src="js/buttons.js"></script>
 	</body>
